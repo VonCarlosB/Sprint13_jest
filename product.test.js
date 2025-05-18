@@ -6,7 +6,8 @@ beforeEach(() => {
 
 describe('addProduct', () => {
     it('should add a product and increase the id', () => {
-        expect(addProduct('Product1', 1))
+        addProduct('Product1', 1)
+        expect(getProducts()).toEqual([{id:0, name:'Product1', price:1}])
     });
     it('should throw error if product already exists', () => {
         addProduct('Product1', 1)
@@ -20,7 +21,8 @@ describe('addProduct', () => {
 describe('removeProduct', () => {
     it('should remove a product given the id', () => {
         addProduct('Product1', 1)
-        expect(removeProduct(0))
+        removeProduct(0)
+        expect(getProducts()).toEqual([])
     });
     it('should throw error if product does not exist', () => {
         expect(() => removeProduct(0)).toThrow('Product does not exist')
@@ -40,7 +42,8 @@ describe('getProduct', () => {
 describe('updateProduct', () => {
     it('should update an existing product with the provided parameters', () => {
         addProduct('Product1', 1)
-        expect(updateProduct(0, 'Updated', 1.5))
+        updateProduct(0, 'Updated', 1.5)
+        expect(getProducts()).toEqual([{id:0, name:'Updated', price:1.5}])
     });
     it('should return error if product does not exist', () => {
         expect(() => updateProduct(0, 'Updated', 1.5)).toThrow('Product does not exist')
