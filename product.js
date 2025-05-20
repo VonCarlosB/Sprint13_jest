@@ -7,7 +7,7 @@ function resetProducts() {
 }
 
 function addProduct(name, price) {
-    if(name === undefined || price === undefined){
+    if(name === undefined || price === undefined || name === null || price === null){
         throw new Error('name and price must be defined')
     }else if(products.findIndex(product => product.name === name) != -1){
         throw new Error('Product with that name already exists')

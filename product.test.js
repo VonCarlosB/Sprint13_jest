@@ -16,7 +16,10 @@ describe('addProduct', () => {
         expect(() => addProduct('Product1', 1)).toThrow('Product with that name already exists');
     });
     it('should throw error if product params are not defined', () => {
-        expect(() => addProduct('Product1')).toThrow('name and price must be defined');
+        expect(() => addProduct('Product1', null)).toThrow('name and price must be defined');
+    });
+    it('should throw error if product params are not defined', () => {
+        expect(() => addProduct(null, 1)).toThrow('name and price must be defined');
     });
 });
 
