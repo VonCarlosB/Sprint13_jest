@@ -8,6 +8,8 @@ describe('addProduct', () => {
     it('should add a product and increase the id', () => {
         addProduct('Product1', 1)
         expect(getProducts()).toEqual([{id:0, name:'Product1', price:1}])
+        addProduct('Product2', 2)
+        expect(getProducts()).toEqual([{id:0, name:'Product1', price:1},{id:1, name:'Product2', price:2}])
     });
     it('should throw error if product already exists', () => {
         addProduct('Product1', 1)
